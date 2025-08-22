@@ -1,1 +1,0 @@
-## Algoritmo de busca linear
