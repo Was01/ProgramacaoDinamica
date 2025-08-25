@@ -10,14 +10,16 @@ class Fracao:
         return Fracao(-self.numerador,self.denominador)
     
     def mdc(self):
-        if self.numerador<self.denominador:
-            self.numerador,self.denominador=self.denominador,self.numerador
-        r=self.numerador%self.denominador
+        a=self.numerador
+        b=self.denominador
+        if a<b:
+            a,b=b,a
+        r=a%b
         while r!=0:
-            self.numerador=self.denominador
-            self.denominador=r
-            r=self.numerador%self.denominador
-        return self.denominador
+            a=b
+            b=r
+            r=a%b
+        return b
     
     def simplificar(self):
         r=self.numerador%self.denominador
@@ -25,17 +27,28 @@ class Fracao:
             self.numerador=int(self.numerador/self.denominador)
             self.denominador=1
         else:
-            x=Fracao(self.numerador,self.denominador)
-            mdc=x.mdc()
+            mdc=self.mdc()
             self.numerador=int(self.numerador/mdc)
             self.denominador=int(self.denominador/mdc)
         return Fracao(self.numerador,self.denominador)
+    
+    def somar(self,outra):
+        self.numerador=self.numerador*outra.denominador+self.denominador*outra.numerador
+        self.denominador=self.denominador*outra.denominador
+        return Fracao(self.numerador,self.denominador).simplificar()
+
+
+    
+    def multiplicar(self,outra):
+        self.numerador=self.numerador*outra.numerador
+        self.denominador=self.denominador*outra.denominador
+        return Fracao(self.numerador,self.denominador).simplificar()
 
 
 
-a=Fracao(45,90)
-
-a=a.simplificar()
+a=Fracao(1,2)
+b=Fracao(1,3)
+a=a.somar(b)
 
 print(a.numerador)
 print(a.denominador)
