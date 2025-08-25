@@ -43,13 +43,15 @@ class Fracao:
         self.numerador=self.numerador*outra.numerador
         self.denominador=self.denominador*outra.denominador
         return Fracao(self.numerador,self.denominador).simplificar()
+    
+    def __str__(self):
+        representation = "{}/{}".format(self.numerador, self.denominador)
+        return representation
 
 
+if __name__ == '__main__':
+    a = Fracao(1, 5)
+    a=a.somar(a)
 
-a=Fracao(1,2)
-b=Fracao(1,3)
-a=a.somar(b)
-
-print(a.numerador)
-print(a.denominador)
-
+    print(a)
+    
