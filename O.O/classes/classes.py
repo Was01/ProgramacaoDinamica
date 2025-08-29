@@ -59,12 +59,18 @@ class Fracao:
     def __str__(self):
         representation = "{}/{}".format(self.numerador, self.denominador)
         return representation
+    
+    def __repr__(self):
+        representation="Fracao({},{})".format(self.numerador,self.denominador)
+        return representation
+    
+
+    
+a = Fracao(5,10)
+b= Fracao(5,16)
+a=a.simplificar()
 
 
-if __name__ == '__main__':
-    a = Fracao(5,8)
-    b= Fracao(5,16)
-    a=a.dividir(b)
-
-    print(a)
+lista=[a,b]
+print(lista)
     
