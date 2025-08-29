@@ -41,17 +41,25 @@ class Fracao:
         self.denominador=self.denominador*outra.denominador
         return Fracao(self.numerador,self.denominador).simplificar()
     
+    def __add__(self,outra):
+        return self.somar(outra)
+    
     def subtrair(self,outra):
         self.numerador=self.numerador*outra.denominador-self.denominador*outra.numerador
         self.denominador=self.denominador*outra.denominador
         return Fracao(self.numerador,self.denominador).simplificar()
-      
     
+    def __sub__(self,outra):
+        return self.subtrair(outra)
+      
     
     def multiplicar(self,outra):
         self.numerador=self.numerador*outra.numerador
         self.denominador=self.denominador*outra.denominador
         return Fracao(self.numerador,self.denominador).simplificar()
+    
+    def __mul__(self,outra):
+        return self.multiplicar(outra)
     
     def dividir(self,outra):
         return Fracao(self.numerador,self.denominador).multiplicar(outra.inverter()).simplificar()
@@ -66,11 +74,10 @@ class Fracao:
     
 
     
-a = Fracao(5,10)
-b= Fracao(5,16)
-a=a.simplificar()
+a = Fracao(8,16)
+b= Fracao(16,8)
+d=a.negar()
 
 
-lista=[a,b]
-print(lista)
+print(d)
     
