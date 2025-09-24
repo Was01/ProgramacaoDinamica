@@ -74,29 +74,30 @@ class LinkedList:
             pointer.next=novo_no
         self._size+=1
     
-    def remove (self,elemento):
+    def remove(self, elemento):
+        """ Remove a primeira ocorrência de um elemento da lista ligada."""
+        # Caso 1: A lista está vazia.
         if self.head is None:
             raise ValueError(f'{elemento} não está na lista.')
-        elif self.head.data==elemento:
-            self.head=self.head.next
-            self._size-=1
+        # Caso 2: O elemento a ser removido é o 'head' da lista.
+        if self.head.data == elemento:
+            self.head = self.head.next
+            self._size -= 1
             return True
-        else:
-            ancestor =self.head
-            pointer=self.head.next
-            while pointer:
-                if pointer.data==elemento:
-                    ancestor.next=pointer.next
-                    pointer.next=None
-                ancestor=pointer
-                pointer=pointer.next
-            self._size-=1
-            return True
-        raise ValueError(f'{elemento} não está na lista.')
-        
-            
+        # Caso 3: O elemento está em outro lugar na lista.
+        ancestor = self.head
+        pointer = self.head.next
+        while pointer:
+            if pointer.data == elemento:
+                ancestor.next = pointer.next
+                pointer.next = None  # Boa prática para desreferenciar o nó.
+                self._size -= 1
+                return True  # 'return' colocado corretamente após a remoção.
+            ancestor = pointer
+            pointer = pointer.next
 
-    
+         # Caso 4: O elemento não foi encontrado na lista.
+        raise ValueError(f'{elemento} não está na lista.')
 
 lista=LinkedList()
 
