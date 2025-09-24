@@ -73,19 +73,38 @@ class LinkedList:
             novo_no.next=pointer.next
             pointer.next=novo_no
         self._size+=1
+    
+    def remove (self,elemento):
+        if self.head is None:
+            raise ValueError(f'{elemento} não está na lista.')
+        elif self.head.data==elemento:
+            self.head=self.head.next
+            self._size-=1
+            return True
+        else:
+            ancestor =self.head
+            pointer=self.head.next
+            while pointer:
+                if pointer.data==elemento:
+                    ancestor.next=pointer.next
+                    pointer.next=None
+                ancestor=pointer
+                pointer=pointer.next
+            self._size-=1
+            return True
+        raise ValueError(f'{elemento} não está na lista.')
+        
+            
 
-
+    
 
 lista=LinkedList()
-lista.append('Suelen')
-lista.append('Samara')
-lista.append("Marli")
 
-lista.insert(2,'João')
+lista.append('Washington')
+lista.append('Marli')
+lista.remove('Marli')
+lista.remove('Washington')
 
 for i in range(len(lista)):
-    print(lista[i])
-
-
-
+    print (lista[i])
 
