@@ -1,1 +1,0 @@
-## Funções para inverter listas
