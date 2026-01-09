@@ -22,7 +22,7 @@ void selection_sort(int A[], int n)
 
 int main(){
     int vet[5]={7,5,1,8,3};
-    selection_sort(vet,6);
+    selection_sort(vet,5);
     for(int i=0;i<5;i++){
         printf("%d ",vet[i]);
     }
